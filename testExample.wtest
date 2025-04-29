@@ -1,9 +1,24 @@
-import example.pepita
+import example.*
 
-describe "group of tests for pepita" {
-
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
-  }
-
+test "Que roberto (90kg) puede llevar un paquete que está pago en un camión que tiene un acoplado" {
+  roberto.peso(90)
+  camion.acoplado(1)
+  roberto.transporte(camion)
+  assert.equals(590, roberto.peso())
+  paquete.estaPago(true)
+  assert.equals(true, paquete.puedeSerEntregado(roberto, puenteDeBrooklyn))
 }
+
+test "Que neo con crédito no puede llevar un paquete que no está pago a la matrix." {
+  neo.puedeLlamar(true)
+  paquete.estaPago(false)
+  assert.equals(false, paquete.puedeSerEntregado(neo, laMatrix))
+}
+
+test "Que el Primer enpleado:Neo, pueda llevar el paquete a LaMatrix" {
+  mensajeria.contratarMensajero(neo)
+  neo.puedeLlamar(true)
+  paquete.estaPago(true)
+  assert.equals(true, mensajeria.elPrimeroPuedeEntregarElPaquete(laMatrix))
+}
+
